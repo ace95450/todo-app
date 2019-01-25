@@ -5,6 +5,7 @@ import { IonicModule } from '@ionic/angular';
 import { RouterModule } from '@angular/router';
 
 import { ListPage } from './list.page';
+import {PipesModules} from '../pipes/pipes.modules';
 
 @NgModule({
   imports: [
@@ -16,7 +17,8 @@ import { ListPage } from './list.page';
         path: '',
         component: ListPage
       }
-    ])
+    ]),
+    PipesModules
   ],
   declarations: [ListPage]
 })
