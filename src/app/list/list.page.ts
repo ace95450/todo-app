@@ -9,11 +9,7 @@ import {TaskStorageService} from '../services/task-storage.service';
   styleUrls: ['list.page.scss']
 })
 export class ListPage implements OnInit {
-  /*Générer une progress-bar Auto*/
 
-  avancement(){
-
-  };
 
   /*Création d'une tâche*/
   task: Task = new Task();
@@ -51,32 +47,34 @@ export class ListPage implements OnInit {
   }
 
   /* Progress-bar */
-  countTrue(){
-    let i=0;
-    let j=0;
-    while( i < this.tasks.length)
-    {
-      if( this.tasks[i].status === true )
-      { j++;       }
-      i++;    }
+  countTrue() {
+    let i = 0;
+    let j = 0;
+    while ( i < this.tasks.length) {
+      if ( this.tasks[i].status === true ) {
+        j++;
+      }
+      i++;
+    }
       return j / this.tasks.length;
   }
 
-  constructor(private taskStorage: TaskStorageService){
+  /*Sauvegarder la tâche SI elle n'est pas VIDE*/
+  constructor(private taskStorage: TaskStorageService) {
     this.taskStorage.getTasks().then(tasks => {
-      if ( null !== tasks){
+      if ( null !== tasks) {
         this.tasks = tasks;
       }
     });
   }
 
-  /*Sauvegarde*/
-  saveOUrTasks(){
+  /*Sauvegarde Task*/
+  saveOUrTasks() {
     this.taskStorage.saveTasks(this.tasks);
   }
 
-  /*Suppression*/
-  deleteTask(task: Task){
+  /*Suppression Task*/
+  deleteTask(task: Task) {
     _.pullAllWith(this.tasks, [task], _.isEqual);
     this.saveOUrTasks();
   }

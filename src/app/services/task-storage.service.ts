@@ -16,7 +16,15 @@ export class TaskStorageService {
     }
 
    /*Permet de récupérer les tâches sauvegarder*/
-  getTasks(): Promise<Task[]>{
+  getTasks(): Promise<Task[]> {
     return this.storage.get('tasks');
+  }
+
+    saveNew() {
+
+    }
+
+  getNews() {
+
   }
 }
